@@ -59,6 +59,6 @@ class IndexComputer:
 
         
                  
-IndexComputer.ComputeIndex("Software Engineering") 
+IndexComputer.ComputeIndex("Human Resources") 
 
                 
