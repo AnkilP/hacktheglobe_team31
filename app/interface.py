@@ -1,15 +1,17 @@
 from IndexComputer import IndexComputer
+from quickstart import survey_data
 
 class interface(object):
 
 	def __init__(self):
 		self.locations = []
 		self.services = []
+        self.survey_responses = survey_data()
 
 	def get_job_information(self, skills): 
 		#something with skills		
 		#return array of locations
-                self.locations = IndexComputer.ComputeIndex(skills)
+		self.locations = IndexComputer.ComputeIndex(skills)
 
 	def get_mentorship_information(self, skills):
 		#return array of locations
