@@ -10,9 +10,9 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = '1hbrDs4_OR88qcDqOQB3xLXLW58BN5xBlSTkI1brHl7Y'
-SAMPLE_RANGE_NAME = 'Form Responses 1!A2:AO2'
+SAMPLE_RANGE_NAME = 'Form Responses 1!'
 
-def main():
+def get_survey_responses(i):
     """Shows basic usage of the Sheets API.
     Prints values from a sample spreadsheet.
     """
@@ -34,15 +34,14 @@ def main():
         # Save the credentials for the next run
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
-
+    
     service = build('sheets', 'v4', credentials=creds)
 
     # Call the Sheets API
     sheet = service.spreadsheets()
+    SAMPLE_RANGE_NAME = SAMPLE_RANGE_NAME + "A" + str(i) + ":AO" + str(i)
+
     result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                 range=SAMPLE_RANGE_NAME).execute()
     numRows = result.get('values') if result.get('values')is not None else 0
-    print('{0}'.format(numRows))
-
-if __name__ == '__main__':
-    main()
+    return result
