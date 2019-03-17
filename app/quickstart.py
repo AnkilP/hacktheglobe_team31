@@ -47,4 +47,7 @@ class survey_data():
         result = sheet.values().get(spreadsheetId=self.SAMPLE_SPREADSHEET_ID,
                                     range=SAMPLE_RANGE_NAME_NEW).execute()
         numRows = result.get('values') if result.get('values')is not None else 0
-        return result
+        if(numRows is not 0):
+            return result
+        else:
+            return None

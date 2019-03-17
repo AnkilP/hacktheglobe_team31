@@ -1,12 +1,10 @@
 from IndexComputer import IndexComputer
-from quickstart import survey_data
 
-class interface(object):
+class interfacing(object):
 
 	def __init__(self):
 		self.locations = []
 		self.services = []
-        self.survey_responses = survey_data()
 
 	def get_job_information(self, skills): 
 		#something with skills		
