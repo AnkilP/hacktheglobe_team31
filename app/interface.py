@@ -1,14 +1,15 @@
+from IndexComputer import IndexComputer
+
 class interface(object):
 
 	def __init__(self):
 		self.locations = []
 		self.services = []
 
-	def get_job_information(self, skills):
+	def get_job_information(self, skills): 
 		#something with skills		
 		#return array of locations
-		location = []
-		self.locations.append(location)
+                self.locations = IndexComputer.ComputeIndex(skills)
 
 	def get_mentorship_information(self, skills):
 		#return array of locations
