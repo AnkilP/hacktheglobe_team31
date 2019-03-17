@@ -51,12 +51,6 @@ class IndexComputer:
 ##                pop = x.Population
 ##                CPI = x.CPI
 
-    
 
-                
-
-        
-                 
-IndexComputer.ComputeIndex("Human Resources") 
 
                 
