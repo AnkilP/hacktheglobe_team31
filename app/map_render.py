@@ -21,11 +21,11 @@ def fullmap():
     skills = []
     survey_response = survey_data()
     interface = IndexComputer()
-    categories = [x.encode('utf8', 'replace') for x in survey_response.get_survey_responses(user_number)]
+    categories = survey_response.get_survey_responses(user_number)
     if(categories is not None):
         user_number = user_number + 1
-        result = [x.encode('utf8', 'replace') for x in survey_response.get_survey_responses(user_number)]
-        skills_index = categories.index("Please select all that apply to your skill set")
+        result = survey_response.get_survey_responses(user_number)
+        skills_index = categories.index("Skills")
         skills = result[skills_index].split(',')
 
     locations = []
