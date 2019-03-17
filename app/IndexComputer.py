@@ -42,10 +42,9 @@ class IndexComputer:
         print("col two mean: " + str(colTwoMean))
         print("col two dev: "+str(colTwoStDev))
 
-        for x in CompleteObjArray:
-            print("index: " + x.getIndex(colOneMean,colOneStDev,colTwoMean,colTwoStDev))
-
-        
+        #for x in CompleteObjArray:
+        #    print("index: " + x.getIndex(colOneMean,colOneStDev,colTwoMean,colTwoStDev))
+               
 
         #at this point have complete array of data.     
         return CompleteObjArray

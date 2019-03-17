@@ -3,8 +3,8 @@
 from flask import Flask, render_template, request
 from flask_googlemaps import GoogleMaps
 from flask_googlemaps import Map, icons
-from interface import interfacing
 from quickstart import survey_data
+from IndexComputer import IndexComputer
 
 app = Flask(__name__, template_folder="templates")
 
@@ -20,7 +20,7 @@ def fullmap():
     user_number = 1
     skills = []
     survey_response = survey_data()
-    interface = interfacing()
+    interface = IndexComputer()
     categories = survey_response.get_survey_response(user_number)
     if(categories is not None):
         user_number = user_number + 1
@@ -28,9 +28,12 @@ def fullmap():
         skills_index = categories.index("Please select all that apply to your skill set")
         skills = result[skills_index].split(',')
 
-    
+    locations = []
     for skill in skills:
-        interface.get_service_information(skill)
+        locationObj = interface.ComputeIndex(skill)
+        for locat in locationObj:
+            locat.getIndex()
+        locations.append(locale)
 
     fullmap = Map(
         identifier="fullmap",
