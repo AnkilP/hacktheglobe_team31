@@ -6,6 +6,11 @@ from flask_googlemaps import Map, icons
 from quickstart import survey_data
 from IndexComputer import IndexComputer
 
+# encoding=utf8
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
+
 app = Flask(__name__, template_folder="templates")
 
 GoogleMaps(
@@ -21,10 +26,10 @@ def fullmap():
     skills = []
     survey_response = survey_data()
     interface = IndexComputer()
-    categories = [x.encode('ascii', 'ignore').decode('ascii') for x in survey_response.get_survey_response(user_number)]
+    categories = survey_response.get_survey_response(user_number)
     if(categories is not None):
         user_number = user_number + 1
-        result = [x.encode('ascii', 'ignore').decode('ascii') for x in survey_response.get_survey_response(user_number)]
+        result = survey_response.get_survey_response(user_number)
         skills_index = categories.index("Please select all that apply to your skill set")
         skills = result[skills_index].split(',')
 
