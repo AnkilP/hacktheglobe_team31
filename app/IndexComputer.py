@@ -44,7 +44,6 @@ class IndexComputer:
 
         for x in CompleteObjArray:
             print("index: " + x.getIndex(colOneMean,colOneStDev,colTwoMean,colTwoStDev))
-
         
 
         #at this point have complete array of data.     

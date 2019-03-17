@@ -11,13 +11,18 @@ class PopulationCPIHolder:
         self.Population = population1
         self.numOfJobs = 0
         self.avgSalary = 0
+        self.index=0
 
     def getIndex(self,mean1,std1,mean2,std2):
         print("\n Job Num Index: "+ '{:.20f}'.format(float(self.numOfJobs.replace(',',''))/float(self.Population)) + " Salary Index: " + str(float(self.avgSalary)/float(self.CPI)))
         print("num of jobs: "+str(float(self.numOfJobs.replace(',',''))) + " num of people: " + str(float(self.Population)))
 
-        return ('{:.20f}'.format(((float(self.numOfJobs.replace(',',''))-mean1)/std1)/float(self.Population) +((float(self.avgSalary)/float(self.CPI))-mean2)/std2))
-    
+        index = ('{:.20f}'.format(((float(self.numOfJobs.replace(',',''))-mean1)/std1)/float(self.Population) +((float(self.avgSalary)/float(self.CPI))-mean2)/std2))
+
+        
+        self.index = index
+
+        return index
     
     @staticmethod
     def getPopCpi():
