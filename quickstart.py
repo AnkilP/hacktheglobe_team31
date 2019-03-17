@@ -8,11 +8,11 @@ from google.auth.transport.requests import Request
 class survey_data():
 
     # If modifying these scopes, delete the file token.pickle.
-    SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
+    self.SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
     # The ID and range of a sample spreadsheet.
-    SAMPLE_SPREADSHEET_ID = '1hbrDs4_OR88qcDqOQB3xLXLW58BN5xBlSTkI1brHl7Y'
-    SAMPLE_RANGE_NAME = 'Form Responses 1!'
+    self.SAMPLE_SPREADSHEET_ID = '1hbrDs4_OR88qcDqOQB3xLXLW58BN5xBlSTkI1brHl7Y'
+    self.SAMPLE_RANGE_NAME = 'Form Responses 1!'
 
     def __init__(self, i):
         self.i = i
@@ -34,7 +34,7 @@ class survey_data():
                 creds.refresh(Request())
             else:
                 flow = InstalledAppFlow.from_client_secrets_file(
-                    'credentials.json', SCOPES)
+                    'credentials.json', self.SCOPES)
                 creds = flow.run_local_server()
             # Save the credentials for the next run
             with open('token.pickle', 'wb') as token:
@@ -44,9 +44,9 @@ class survey_data():
 
         # Call the Sheets API
         sheet = service.spreadsheets()
-        SAMPLE_RANGE_NAME = SAMPLE_RANGE_NAME + "A" + str(self.i) + ":AO" + str(self.i)
+        SAMPLE_RANGE_NAME_NEW = self.SAMPLE_RANGE_NAME + "A" + str(self.i) + ":AO" + str(self.i)
 
-        result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
-                                    range=SAMPLE_RANGE_NAME).execute()
+        result = sheet.values().get(spreadsheetId=self.SAMPLE_SPREADSHEET_ID,
+                                    range=SAMPLE_RANGE_NAME_NEW).execute()
         numRows = result.get('values') if result.get('values')is not None else 0
         return result
