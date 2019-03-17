@@ -7,8 +7,7 @@ from google.auth.transport.requests import Request
 
 class survey_data():
 
-    def __init__(self, i):
-        self.i = i
+    def __init__(self):
         # If modifying these scopes, delete the file token.pickle.
         self.SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
@@ -16,7 +15,7 @@ class survey_data():
         self.SAMPLE_SPREADSHEET_ID = '1hbrDs4_OR88qcDqOQB3xLXLW58BN5xBlSTkI1brHl7Y'
         self.SAMPLE_RANGE_NAME = 'Form Responses 1!'
 
-    def get_survey_responses(self):
+    def get_survey_responses(self, i):
         """Shows basic usage of the Sheets API.
         Prints values from a sample spreadsheet.
         """
@@ -43,7 +42,7 @@ class survey_data():
 
         # Call the Sheets API
         sheet = service.spreadsheets()
-        SAMPLE_RANGE_NAME_NEW = self.SAMPLE_RANGE_NAME + "A" + str(self.i) + ":AO" + str(self.i)
+        SAMPLE_RANGE_NAME_NEW = self.SAMPLE_RANGE_NAME + "A" + str(i) + ":AO" + str(i)
 
         result = sheet.values().get(spreadsheetId=self.SAMPLE_SPREADSHEET_ID,
                                     range=SAMPLE_RANGE_NAME_NEW).execute()
