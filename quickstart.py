@@ -14,10 +14,10 @@ class survey_data():
     SAMPLE_SPREADSHEET_ID = '1hbrDs4_OR88qcDqOQB3xLXLW58BN5xBlSTkI1brHl7Y'
     SAMPLE_RANGE_NAME = 'Form Responses 1!'
 
-    def __init__(self):
-        pass
+    def __init__(self, i):
+        self.i = i
 
-    def get_survey_responses(self, i):
+    def get_survey_responses(self):
         """Shows basic usage of the Sheets API.
         Prints values from a sample spreadsheet.
         """
@@ -44,7 +44,7 @@ class survey_data():
 
         # Call the Sheets API
         sheet = service.spreadsheets()
-        SAMPLE_RANGE_NAME = SAMPLE_RANGE_NAME + "A" + str(i) + ":AO" + str(i)
+        SAMPLE_RANGE_NAME = SAMPLE_RANGE_NAME + "A" + str(self.i) + ":AO" + str(self.i)
 
         result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                     range=SAMPLE_RANGE_NAME).execute()
