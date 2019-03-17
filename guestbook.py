@@ -32,7 +32,6 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 DEFAULT_GUESTBOOK_NAME = 'default_guestbook'
 
-
 # We set a parent key on the 'Greetings' to ensure that they are all
 # in the same entity group. Queries across the single entity group
 # will be consistent. However, the write rate should be limited to
@@ -49,9 +48,47 @@ def guestbook_key(guestbook_name=DEFAULT_GUESTBOOK_NAME):
 # [START greeting]
 class Author(ndb.Model):
     """Sub model for representing an author."""
-    identity = ndb.StringProperty(indexed=False)
-    email = ndb.StringProperty(indexed=False)
-
+    identity = ndb.StringProperty(indexed=True)
+    email = ndb.StringProperty(indexed=True)
+    prefix = ndb.StringProperty(indexed=True)
+    country_residence = ndb.StringProperty(indexed=True)
+    country_citizenship = ndb.StringProperty(indexed=True)
+    native_language = ndb.StringProperty(indexed=True)
+    level_of_english = ndb.IntegerProperty(indexed=True)
+    level_of_french = ndb.IntegerProperty(indexed=True)
+    can_avail = ndb.IntegerProperty(indexed=True)
+    education_level =  ndb.IntegerProperty(indexed=True)
+    institution = ndb.StringProperty(indexed=True)
+    eng_program = ndb.IntegerProperty(indexed=True)
+    education_level_2 = ndb.IntegerProperty(indexed=True)
+    institution2 = ndb.StringProperty(indexed=True)
+    eng_program2 = ndb.IntegerProperty(indexed=True)
+    work_exp = ndb.StringProperty(indexed=True)
+    start_date = ndb.DateProperty(indexed=True)
+    end_date = ndb.DateProperty(indexed=True)
+    role = ndb.StringProperty(indexed=True)
+    employer = ndb.StringProperty(indexed=True)
+    work_location = ndb.StringProperty(indexed=True)
+    industry = ndb.IntegerProperty(indexed=True)
+    achievements = ndb.StringProperty(indexed=True)
+    work_exp2 = ndb.StringProperty(indexed=True)
+    start_date2 = ndb.DateProperty(indexed=True)
+    end_date2 = ndb.DateProperty(indexed=True)
+    role2 = ndb.StringProperty(indexed=True)
+    employer2 = ndb.StringProperty(indexed=True)
+    work_location2 = ndb.StringProperty(indexed=True)
+    industry2 = ndb.IntegerProperty(indexed=True)
+    achievements2 = ndb.StringProperty(indexed=True)
+    work_exp3 = ndb.StringProperty(indexed=True)
+    start_date3 = ndb.DateProperty(indexed=True)
+    end_date3 = ndb.DateProperty(indexed=True)
+    role3 = ndb.StringProperty(indexed=True)
+    employer3 = ndb.StringProperty(indexed=True)
+    work_location3 = ndb.StringProperty(indexed=True)
+    industry3 = ndb.IntegerProperty(indexed=True)
+    achievements3 = ndb.StringProperty(indexed=True)
+    skills = ndb.IntegerProperty(indexed=True)
+    skills_resp = ndb.StringProperty(indexed=True)
 
 class Greeting(ndb.Model):
     """A main model for representing an individual Guestbook entry."""
