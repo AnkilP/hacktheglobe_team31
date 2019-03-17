@@ -7,15 +7,14 @@ from google.auth.transport.requests import Request
 
 class survey_data():
 
-    # If modifying these scopes, delete the file token.pickle.
-    self.SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
-
-    # The ID and range of a sample spreadsheet.
-    self.SAMPLE_SPREADSHEET_ID = '1hbrDs4_OR88qcDqOQB3xLXLW58BN5xBlSTkI1brHl7Y'
-    self.SAMPLE_RANGE_NAME = 'Form Responses 1!'
-
     def __init__(self, i):
         self.i = i
+        # If modifying these scopes, delete the file token.pickle.
+        self.SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
+
+        # The ID and range of a sample spreadsheet.
+        self.SAMPLE_SPREADSHEET_ID = '1hbrDs4_OR88qcDqOQB3xLXLW58BN5xBlSTkI1brHl7Y'
+        self.SAMPLE_RANGE_NAME = 'Form Responses 1!'
 
     def get_survey_responses(self):
         """Shows basic usage of the Sheets API.
