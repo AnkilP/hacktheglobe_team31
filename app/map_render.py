@@ -25,8 +25,7 @@ def fullmap():
     if(categories is not None):
         user_number = user_number + 1
         result = survey_response.get_survey_responses(user_number)
-        skills_index = categories.index("Skills")
-        skills = result[skills_index].split(',')
+        skills = categories("Skills").split(',')
 
     locations = []
     for skill in skills:
