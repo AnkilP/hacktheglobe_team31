@@ -36,15 +36,14 @@ class IndexComputer:
         colTwoMean = df.mean(0)[1]
 
 
-        print("col one dev: " + str(colOneStDev))
-        print("col one mean: " + str(colOneMean))
+        #print("col one dev: " + str(colOneStDev))
+#        print("col one mean: " + str(colOneMean))
 
-        print("col two mean: " + str(colTwoMean))
-        print("col two dev: "+str(colTwoStDev))
+ #       print("col two mean: " + str(colTwoMean))
+  #      print("col two dev: "+str(colTwoStDev))
 
         #for x in CompleteObjArray:
         #    print("index: " + x.getIndex(colOneMean,colOneStDev,colTwoMean,colTwoStDev))
-               
 
         #at this point have complete array of data.     
         return CompleteObjArray

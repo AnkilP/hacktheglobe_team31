@@ -30,10 +30,20 @@ def fullmap():
 
     locations = []
     for skill in skills:
-        locationObj = interface.ComputeIndex(skill)
-        for locat in locationObj:
-            locat.getIndex()
-        locations.append(locale)
+        locationlist = interface.ComputeIndex(skill)
+        city_list = [x.City for x in locationlist]
+        indexList = [float(x.index) for c in locationlist]
+        city_list, indexList = (list(t) for t in zip(*sorted(zip(city_list, indexList))))
+        locations.append(city_list[0])
+        locations.append(city_list[1])
+        locations.append(city_list[2])
+
+    locations = sorted(set(locations))[0:2]
+
+    # Geocoding an address
+    lat_locations = []
+    for i in locations:
+        lat_locations.append(GoogleMaps.geocode(i))
 
     fullmap = Map(
         identifier="fullmap",
@@ -51,20 +61,20 @@ def fullmap():
         markers=[
             {
                 'icon': '//maps.google.com/mapfiles/ms/icons/green-dot.png',
-                'lat': 37.4419,
-                'lng': -122.1419,
+                'lat': lat_locations[0][0],
+                'lng': lat_locations[0][1],
                 'infobox': "Hello I am <b style='color:green;'>GREEN</b>!"
             },
             {
                 'icon': '//maps.google.com/mapfiles/ms/icons/blue-dot.png',
-                'lat': 37.4300,
-                'lng': -122.1400,
+                'lat': lat_locations[1][0],
+                'lng': lat_locations[1][1],
                 'infobox': "Hello I am <b style='color:blue;'>BLUE</b>!"
             },
             {
                 'icon': '//maps.google.com/mapfiles/ms/icons/red-dot.png',
-                'lat': 37.4300,
-                'lng': -122.1390,
+                'lat': lat_locations[2][0],
+                'lng': lat_locations[2][1],
                 'infobox': "Hello I am <b style='color:red;'>RED</b>!"
             },
         ],
